@@ -1,22 +1,16 @@
-import config from'./config';
+import express from "express";
+import config from "./config";
 
-// import https from 'https';
-// https.get('https://www.lynda.com', res => {
-//   console.log("response status: ", res.statusCode);
-//   res.on('data', chunk => {
-//     console.log(chunk.toString());
-//   });
-// });
+const server = express();
+// "dir", controller
+server.get('/', (req, res) => {
+  res.send('Hello Express');
+});
 
-import http from "http";
-
-const server = http.createServer();
-
-server.listen(config.port);
-server.on('request', (req, res)=>{
-  res.write('hello HTTP\n');
-  setTimeout(()=>{
-    res.write('I can stream\n');
-    res.end();
-  });
+server.get('/about.html', (req, res) => {
+  res.send('the about page');
 })
+
+server.listen(config.port, () => {
+  console.log('express listening on', config.port);
+});
