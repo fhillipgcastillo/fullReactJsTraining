@@ -68,3 +68,15 @@ react, react-dom => for react component (front-end and back-end)
 babel => for ES
 webpack => for config and making browser recognize the code and
 nodemon => to auto-restart after changing dependencies
+
+
+===========
+ejs notes:
+
+express.render('filename', {content: 'hello'})
+
+<%= content %> escaped
+<%- content %> no escaped
+
+
+<%- include('header') -%> to import/include partial html files
