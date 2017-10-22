@@ -4,7 +4,9 @@
   "description": "Learning fullstack javascript development: mongodb, node.js, react.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nodestart": "node server.js",
+    "start": "nodemon --exec babel-node server.js --ignore public/",
+    "dev": "webpack -wd",
   },
   "author": "",
   "license": "ISC",
