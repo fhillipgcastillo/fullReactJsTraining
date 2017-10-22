@@ -47,3 +47,24 @@ const toDecimal = (base, ...numbers) => {
 
 toDecimal(2, 101, 111, 1010)
 console.log([0, ...numbers]) => [0, 101, 111, 1010]
+
+with babel we can use import ... from
+
+
+======================================
+
+project = 3 Nodes:
+* Web Server
+* React components (front-end and back-end)
+* ( API Server)
+
+====
+to init a project
+npm init
+
+express => for the api
+mongodb => mongodb driver
+react, react-dom => for react component (front-end and back-end)
+babel => for ES
+webpack => for config and making browser recognize the code and
+nodemon => to auto-restart after changing dependencies
