@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDom from 'react-dom';
 
+import App from "./component/App";
+
 ReactDom.render(
-  React.createElement('h2', null, 'Hello React'),
+  <App headerMessage="Hello Read with JSX!" />,
   document.getElementById('root')
 )
