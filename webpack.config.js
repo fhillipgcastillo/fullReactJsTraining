@@ -7,7 +7,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        text: /\.js$/,
+        test: /\.js$/,
         loader: 'babel-loader'
       }
     ]
