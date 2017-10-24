@@ -13,11 +13,17 @@ server.use(sassMiddleware({
 
 server.set('view engine', 'ejs');
 
+import serverRender from './serverRender';
+
 // "dir", controller
 server.get('/', (req, res) => {
-  res.render('index', {
-    content: 'Hello Express <em>Content!</em>'
-  });
+  serverRender()
+    .then( content => {
+        res.render('index', {
+          content
+        });
+      })
+    .catch(console.error);
 });
 
 server.use('/api', apiRouter);
@@ -28,6 +34,6 @@ server.use(express.static('public')); //middleware
 //   })
 // })
 
-server.listen(config.port, () => {
+server.listen(config.port, config.host, () => {
   console.log('express listening on', config.port);
 });

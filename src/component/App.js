@@ -9,7 +9,7 @@ import ContestPreview from './ContestPreview';
 class App extends Component {
   state = {
     pageHeader: 'Naming Contest',
-    contests: []
+    contests: this.props.initialContests || []
   };
   // lifecicle methos
   componentDidMount(){
