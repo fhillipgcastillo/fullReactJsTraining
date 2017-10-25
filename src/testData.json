@@ -3,12 +3,14 @@
     {
       "id":1,
       "categoryName":"Busines/Company",
-      "contestName": "Cognitive Building Bricks"
+      "contestName": "Cognitive Building Bricks",
+      "description": "Some pretty Good Description for Cognitive Building Bricks"
     },
     {
       "id":2,
       "categoryName":"Comunity/School",
-      "contestName": "Cognitive Building Bricks"
+      "contestName": "Comunity College School",
+      "description": "Some pretty Good Description for Comunity College School"
     }
   ]
 }
