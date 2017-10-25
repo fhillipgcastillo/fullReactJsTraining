@@ -12,10 +12,12 @@ console.log(`${config.serverUrl}/api/contests`);
 const serverRender = () =>
   axios.get(`${config.serverUrl}/api/contests`)
     .then(resp => {
-      // console.log("serverRender", resp.data);
-      return ReactDOMServer.renderToString(
-        <App initialContests={resp.data.contests} />
-      );
+      return {
+        initialMarkUp: ReactDOMServer.renderToString(
+          <App initialContests={resp.data.contests} />
+        ),
+        initialData: resp.data
+      };
     });
     // .catch(console.error);
 
