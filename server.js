@@ -18,6 +18,12 @@ import serverRender from './serverRender';
 // "dir", controller
 server.get('/', (req, res) => {
   serverRender()
+    .then(({initialMarkUp, initialData}) => {
+      res.render('index', {
+        initialMarkUp,
+        initialData
+      });
+    })
     .then( content => {
         res.render('index', {
           content
