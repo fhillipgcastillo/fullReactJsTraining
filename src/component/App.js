@@ -6,7 +6,9 @@ import Contest from './Contest';
 import * as api from "../api";
 
 const pushState = (obj, url) => window.history.pushState(obj, '', url);
-
+const onPopState = handler => {
+  window.onpopstate = handler;
+};
 class App extends Component {
   static propTypes = {
     initialData: PropTypes.object.isRequired
@@ -17,8 +19,17 @@ class App extends Component {
     return "Naming Contest";
   };
   // lifecicle methos
-  componentDidMount(){ }/*to get data, timers, listeners*/
-  componentWillUnmount(){}
+  componentDidMount(){
+    let self = this;
+    onPopState( (e) => {
+      self.setState({
+        currentContestId: (event.state || {}).currentContestId
+      });
+    });
+  };/*to get data, timers, listeners*/
+  componentWillUnmount(){
+    onPopState(null);
+  };
   fetchContest = (contestId) => {
     pushState(
       {currentContestId: contestId},
