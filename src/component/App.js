@@ -8,9 +8,10 @@ import * as api from "../api";
 const pushState = (obj, url) => window.history.pushState(obj, '', url);
 
 class App extends Component {
-  state = {
-    contests: this.props.initialContests || []
+  static propTypes = {
+    initialData: PropTypes.object.isRequired
   };
+  state = this.props.initialData;
   pageHeader(){
     if(this.state.currentContestId) return this.currentContest().contestName;
     return "Naming Contest";

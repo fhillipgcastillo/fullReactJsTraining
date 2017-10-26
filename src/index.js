@@ -4,6 +4,6 @@ import App from "./component/App";
 
 
 ReactDom.render(
-  <App initialContests={window.initialData.contests} />,
+  <App initialData={window.initialData} />,
   document.getElementById('root')
 );
