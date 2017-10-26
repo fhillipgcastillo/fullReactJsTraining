@@ -9,7 +9,7 @@ const ContestList = ({contests, onContestClick}) => (
       <ContestPreview
         key={contestId}
         onClick={onContestClick}
-        {...contests[[contestId]]} />
+        {...contests[contestId]} />
     )}
   </div>
 );

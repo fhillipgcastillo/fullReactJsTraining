@@ -8,7 +8,6 @@ class ContestPreview extends React.Component {
   //   this.handleClick = props.handleClick;
   // };
   handleClick = () => {
-    console.log(this.props.contestName);
     this.props.onClick(this.props.id)
   };
   render(){

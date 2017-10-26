@@ -14,11 +14,9 @@ router
     })
   })
   .get('/contests/:contestId', (req, res) =>{
-    //req.params.contestId
     let contest = contests[req.params.contestId];
-    res.send({
-      contest: contest
-    })
+    contest.description = 'Lorem ipsum dolor sit amet, consectetur adip';
+    res.send(contest)
   });
 
 export default router;
