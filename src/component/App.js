@@ -33,6 +33,18 @@ class App extends Component {
         }
       });
     });
+  };
+  fetchContestList = (contestId) => {
+    pushState(
+      {currentContestId: null},
+      `/contests`
+    );
+    api.fetchContestList().then(contests => {
+      this.setState({
+        currentContestId: null,
+        contests
+      });
+    });
 
   };
   currentContest(){
@@ -40,7 +52,9 @@ class App extends Component {
   };
   currentContent(){
     if(this.state.currentContestId){
-      return <Contest {...this.currentContest()} />;
+      return <Contest
+        contestListClick={this.fetchContestList}
+        {...this.currentContest()} />;
     }
     return <ContestList
         onContestClick={this.fetchContest}
