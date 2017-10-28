@@ -6,7 +6,8 @@
   "scripts": {
     "nodestart": "node server.js",
     "start": "nodemon --exec babel-node server.js --ignore public/",
-    "dev": "webpack -wd"
+    "dev": "webpack -wd",
+    "mongod": "mongod"
   },
   "author": "",
   "license": "ISC",
