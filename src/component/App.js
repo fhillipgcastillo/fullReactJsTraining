@@ -48,7 +48,7 @@ class App extends Component {
   fetchContestList = (contestId) => {
     pushState(
       {currentContestId: null},
-      `/contests`
+      `/`
     );
     api.fetchContestList().then(contests => {
       this.setState({
@@ -58,15 +58,29 @@ class App extends Component {
     });
 
   };
+  fetchNames = (namesIds) => {
+    if(namesIds.length === 0) return;
+    api.fetchNames(namesIds).then( names => {
+      this.setState({names})
+    })
+  };
   currentContest(){
     return this.state.contests[this.state.currentContestId];
+  };
+  lookupName = (nameId) => {
+    if(!this.state.names || !this.state.names[nameId]) {
+      return {name:'...we are fetching from db'};
+    }
+    return this.state.names[nameId];
   };
   currentContent(){
     if(this.state.currentContestId){
       return <Contest
         contestListClick={this.fetchContestList}
+        fetchNames={this.fetchNames}
+        lookupName={this.lookupName}
         {...this.currentContest()} />;
-    }
+    };
     return <ContestList
         onContestClick={this.fetchContest}
         contests={this.state.contests} />;
