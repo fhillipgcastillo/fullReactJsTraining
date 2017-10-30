@@ -80,3 +80,7 @@ express.render('filename', {content: 'hello'})
 
 
 <%- include('header') -%> to import/include partial html files
+
+
+to grep/search over git changes
+git grep "\.id"

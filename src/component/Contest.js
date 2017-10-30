@@ -1,10 +1,27 @@
-import React from 'react';
+import React from "react";
 import PropTypes from 'prop-types';
 
 class Contest extends React.Component {
-  componentDidMount(){
+  self = this;
+  constructor(props){
+    super(props);
+    this.state = {
+      valueName: ""
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+  };
+  componentDidMount() {
     this.props.fetchNames(this.props.nameIds);
-    console.log('props',this.props);
+  };
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.addName(this.refs.newNameInput.value, this.props._id);
+    this.refs.newNameInput.value = '';
+  };
+  onChange(event){
+    event.preventDefault();
+    console.log(arguments);
   };
   render(){
     return (
@@ -40,12 +57,12 @@ class Contest extends React.Component {
             <h3 className="panel-title">Propose a New Name</h3>
           </div>
           <div className="panel-body">
-            <form >
+            <form onSubmit={this.handleSubmit}>
               <div className="input-group">
-                <input type="text"
-                   placeholder="New Name Here..."
-                   ref="newNameInput"
-                   className="form-control" />
+              <input type="text"
+                 placeholder="New Name Here..."
+                 ref="newNameInput"
+                 className="form-control" />
                 <span className="input-group-btn">
                   <button type="submit" className="btn btn-info">
                      Sumbit
@@ -70,7 +87,8 @@ Contest.propTypes = {
   fetchNames: PropTypes.func.isRequired,
   nameIds: PropTypes.array.isRequired,
   contestListClick: PropTypes.func.isRequired,
-  lookupName: PropTypes.func.isRequired
+  lookupName: PropTypes.func.isRequired,
+  addName: PropTypes.func.isRequired
 };
 
 export default Contest;

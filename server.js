@@ -3,8 +3,11 @@ import config from "./config";
 import apiRouter from "./api";
 import sassMiddleware from "node-sass-middleware";
 import path from 'path';
+import bodyParser from "body-parser";
+
 
 const server = express();
+server.use(bodyParser.json());
 
 server.use(sassMiddleware({
   src: path.join(__dirname, 'sass'),
@@ -29,16 +32,13 @@ server.get(['/', '/contest/:contestId'], (req, res) => {
           content
         });
       })
-    .catch(console.error);
+    .catch(err => {
+      res.status(404).send("Bad Request")
+    });
 });
 
 server.use('/api', apiRouter);
 server.use(express.static('public')); //middleware
-// server.get('/about.html', (req, res) => {
-//   fs.readFile('./about.html', (err, data) => {
-//     res.send(data.toString());
-//   })
-// })
 
 server.listen(config.port, config.host, () => {
   console.log('express listening on', config.port);
