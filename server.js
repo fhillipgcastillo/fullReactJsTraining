@@ -16,26 +16,42 @@ server.use(sassMiddleware({
 
 server.set('view engine', 'ejs');
 
-import serverRender from './serverRender';
+// import serverRender from './serverRender';
+import {
+  serverRender,
+   blogRender
+ } from './serverRender';
 
-// "dir", controller
+server.get(['/blog', '/blog/:blogId'], (req, res) => {
+ blogRender(req.params.blogId)
+   .then( ({initialMarkUp, initialData}) => {
+     console.log("hello blog render then");
+     res.render('blog', {initialMarkUp, initialData});
+   })
+   .then( blogs => {
+     res.render('blog', {blogs});
+   });
+});
+
+
 server.get(['/', '/contest/:contestId'], (req, res) => {
-  serverRender(req.params.contestId)
-    .then(({initialMarkUp, initialData}) => {
+serverRender(req.params.contestId)
+  .then(({initialMarkUp, initialData}) => {
+    res.render('index', {
+      initialMarkUp,
+      initialData
+    });
+  })
+  .then( content => {
       res.render('index', {
-        initialMarkUp,
-        initialData
+        content
       });
     })
-    .then( content => {
-        res.render('index', {
-          content
-        });
-      })
-    .catch(err => {
-      res.status(404).send("Bad Request")
-    });
+  .catch(err => {
+    res.status(404).send("Bad Request")
+  });
 });
+
 
 server.use('/api', apiRouter);
 server.use(express.static('public')); //middleware

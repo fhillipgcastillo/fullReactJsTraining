@@ -13,8 +13,32 @@
   padding: 20px; }
 
 .link {
-  cursor: pointer; }
+  cursor: pointer;
+  color: #0000ee; }
 
 .home-link {
   margin-top: 1em;
   color: #0000ee; }
+
+.blog {
+  padding: 10px; }
+  .blog .blog-preview, .blog .b-description .b-thumbnail, .blog .b-description .b-short-description, .blog .footer {
+    float: left;
+    padding: 10px; }
+  .blog .blog-preview {
+    width: 32.5%;
+    border-radius: 2px 2px 2px;
+    box-shadow: 2px 2px 2px 2px #829e95; }
+    .blog .blog-preview .b-header .b-title.link {
+      color: red;
+      font-size: 2.4em; }
+    .blog .blog-preview .b-header .b-date {
+      text-align: right; }
+    .blog .blog-preview .b-description .b-thumbnail {
+      width: 200px;
+      height: 200px;
+      background-color: #111; }
+    .blog .blog-preview .b-description .b-thumbnail {
+      width: 37%; }
+    .blog .blog-preview .b-description .b-short-description {
+      width: 57%; }

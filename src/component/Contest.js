@@ -21,7 +21,6 @@ class Contest extends React.Component {
   };
   onChange(event){
     event.preventDefault();
-    console.log(arguments);
   };
   render(){
     return (

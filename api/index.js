@@ -97,5 +97,52 @@ router
   });
 });
 
+router
+  .get('/blogs',  (req, res) => {
+    let blogs = {};
+    blogs[ObjectID("59f6c447a835cfdd1817431e")] = {
+      _id: ObjectID("59f6c447a835cfdd1817431e"),
+      Title: "My Awesome History",
+      Date: new Date("10/31/2017"),
+      ShortDescription: "Time ago when I was just a little boy, having aventures over the forest, jumping and getting over...",
+      Thumbnail: "",
+      Tags: ["Time ago", "My", "Awesome", "History", "My Awesome History"],
+      UserId: ObjectID("59f6c447a835cfdd1817432e")
+    };
+    mdb.collection('blogs')
+      .find({})
+      .project({
+        Title: 1,
+        Thumbnail: 1,
+        ShortDescription: 1,
+        EditedDate: 1,
+        UserId:1
+      })
+      .each((err, blog) => {
+        assert.equal(null, err);
+
+        if(!blog) {
+          res.send({blogs});
+          return;
+        }
+        blogs[blog._id] = blog;
+      });
+  });
+
+router
+  .get('/blogs/:blogId',  (req, res) => {
+    let blogs = {};
+    mdb.collection('blogs')
+      .find({_id: req.params.blogId})
+      .each((err, blog) => {
+        assert.equal(null, err);
+
+        if(!blog) {
+          res.send({blogs});
+          return;
+        }
+        blogs[blog._id] = blog;
+      });
+  });
 
 export default router;
