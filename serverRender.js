@@ -47,14 +47,13 @@ const getBlogUrl = (blogId) => {console.log(blogId)
 const blogRender =  (blogId) =>
   axios.get(getBlogUrl(blogId))
     .then( res => {
-      // console.log(res.status, Object.keys(res));
       return {
         initialMarkUp: ReactDOMServer.renderToString(
           <Blog initialData={res.data.blogs || {}} />
-        ),
-        initialData: res.data.blogs
+        )
+        // initialData: res.data.blogs
       };
-    })
+    });
     // .catch( console.error);
 
 export {

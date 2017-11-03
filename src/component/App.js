@@ -35,6 +35,7 @@ class App extends Component {
       {currentContestId: contestId},
       `/contest/${contestId}`
     );
+    console.log("fetch contest", contestId);
     api.fetchContest(contestId).then(contest => {
       this.setState({
         currentContestId: contest._id,
