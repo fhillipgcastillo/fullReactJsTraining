@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 
 class ContestPreview extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.handleClick = props.handleClick;
-  // };
-  handleClick = () => {
-    this.props.onClick(this.props._id)
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this);
+  };
+  handleClick = function() {
+    console.log("contest clicked", this.props.onClick);
+    this.props.onClick(this.props._id);
   };
   render(){
     return (

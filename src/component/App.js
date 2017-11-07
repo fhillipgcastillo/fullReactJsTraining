@@ -104,7 +104,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header message={this.pageHeader()} />
-        { this.currentContent() }
+        <div className="contests-list">
+          { this.currentContent() }
+        </div>
       </div>
     );
   }
