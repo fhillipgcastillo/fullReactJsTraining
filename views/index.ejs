@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  window.initialData = <%- JSON.stringify(initialData) -%>
+  initialData = <%- initialData !== undefined && initialData !== null ? JSON.stringify(initialData) : "{}"  -%>
 </script>
 <%- include('header') -%>
   <div id="root">
