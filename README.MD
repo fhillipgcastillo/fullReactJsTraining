@@ -1,7 +1,8 @@
 ## This is a Training Course Practice Code ##
-
-to run the webpack handler run:
+## Porpose
+## Front end server:
 <code> npm run dev</code>
 
-to run webserver/api
-<code>npm run start</code>
+## Node.js Server
+<code>npm run start</code> in order to start backend server and api
+
