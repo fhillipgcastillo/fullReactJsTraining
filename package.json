@@ -15,7 +15,7 @@
     "axios": "^0.19.2",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "json-loader": "^0.5.7",
     "mongodb": "^3.1.13",
     "node-sass-middleware": "^0.11.0",
